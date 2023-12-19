@@ -1,29 +1,27 @@
 #include <iostream>
 using namespace std;
 
-// Functions in C++;
-int Sum(int n1, int n2){
-	int sum = n1 + n2;
-	return sum;
-}
-
-int Subtract(int n1, int n2){
-	int result = n1 - n2;
-	return result;
+void PrintAddition(int n1, int n2){
+	int result = n1 + n2;
+	cout<<"The sum of "<<n1<<" and "<<n2<<" is "<<result<<endl;
+	return ;
 }
 
 int main() {	
- int num1, num2;
- int total;
- cout<<"Please enter Two digits\n";
- cin>>num1>>num2;
- 
- total = Sum(num1, num2);
- cout<<"Sum of the numbers "<<total<<endl;	
-
- total = Subtract(num1, num2);
- cout<<"Difference of the numbers "<<total<<endl;
- 
- return 0;
+	int num1, num2;
+	cout<<"Please enter two numbers\n";
+	cin>>num1>>num2;
+	
+	PrintAddition(num2, num1);	
+	
+	int num3 = 40;
+	int num4 = 60;
+	PrintAddition(num3, num4);
+	
+	int num5 = 25;
+	int num6 = 30;
+	PrintAddition(num5, num6);
+	
+ 	return 0;
 }
 
