@@ -5,6 +5,7 @@ class Node{
 	public:
 		int data;
 		Node * next;
+		Node * prev;
 };
 class LinkedList{
 	private:
@@ -16,11 +17,13 @@ class LinkedList{
 			new_node->next = NULL;
 			Node * temp = head;
 			if(head == NULL){
-				head = new_node;	
+				new_node->prev = NULL;
+				head = new_node;
 			}else{
 				while(temp->next){
 					temp = temp->next;
 				}
+				new_node->prev = temp;
 				temp->next = new_node;
 			}
 		}
@@ -54,8 +57,11 @@ class LinkedList{
 			while(temp){
 				if(temp->data == to_delete){
 					if(previous){
-						previous->next = temp->next;
+						Node * next_node = temp->next;
+						next_node->prev = previous;
+						previous->next = next_node;
 					}else{
+						temp->prev = NULL;
 						head = temp->next;
 					}
 					delete temp;
@@ -71,7 +77,7 @@ class LinkedList{
 		}
 		
 };
-int main() {
+int mian() {
 	int input, data;
 	LinkedList list;
 	
