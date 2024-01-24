@@ -1,52 +1,55 @@
 #include <iostream>
 using namespace std;
-class Node{
-	public:
+struct Node{
 	int data;
-	Node * left;
-	Node * right;
-	
-	Node(){
-		left = right = NULL;
-	}	
+	Node * left = NULL;
+	Node * right = NULL;
 };
-
 class Tree{
 	public:
-	Node *  root;
-	int data;
+	Node * root;
 	
 	Tree(){
 		root = NULL;
 	}
 	
-	insert(int num){
-		Node * temp = new Node();
-		temp->data = num;
-		Node * current = root;
-		if(current == NULL){
-			root = temp;
+	Node* insertNode(Node* ptr, int num){
+		if(ptr == NULL){
+			ptr = new Node();
+			ptr->data = num;
+			return ptr;
+		}
+		
+		if(num > ptr->data){
+			ptr->right = insertNode(ptr->right, num);
 		}else{
-			while(current->right != NULL || current->left != NULL){
-				if(num > current->data){
-					current = current->right;
-				}else{
-					current = current->left;
-				}
-			}
-			
-			if(num > current->data){
-				current->right = temp;
-			}else{
-				current->left = temp;
-			}
-			
-			
+			ptr->left = insertNode(ptr->left, num);
 		}
 	}
-}; 
-int main() {
 	
+	void insert(int num){
+		root = insertNode(root, num);
+	}
+	
+	void inOrder(Node* ptr){
+		if(ptr != NULL){
+			inOrder(ptr->left);
+			cout<<ptr->data<<endl;
+			inOrder(ptr->right);
+		}
+	}
+	
+	void DisplayInOrder(){
+		inOrder(root);
+	}
+	
+};
+int main() {
+	Tree t;
+	t.insert(10);
+	t.insert(5);
+	t.insert(6);
+	t.DisplayInOrder();
 	return 0;
 }
 
