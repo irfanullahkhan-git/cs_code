@@ -35,8 +35,14 @@ class Scientist: public Student, public Employee{
 		}
 };
 
-class Manager{
-	
+class Manager: public Student, public Employee{
+	string team;
+	public:
+		Manager(string i_emp_no, int i_salary, string i_degree, string i_institute, string i_team)
+		: Student(i_degree, i_institute)
+		: Employee(i_emp_no, i_salary){
+			team = i_team;
+		}	
 };
 
 class Labour{
