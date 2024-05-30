@@ -59,7 +59,7 @@ int main(){
 		shape_1	= new Triangle(20, 40); 
 	}
 	
-	cout<<shape_1->getArea()<<endl; 
+	cout<<shape_1->getArea()<<endl;
 	
 	return 0;
 	
