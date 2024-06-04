@@ -12,14 +12,10 @@ class SimpleClass{
 			cout<<"display function has been called: "<<num;
 		}
 
-		
-		
-		
 };
 
 int main(){
 	SimpleClass obj;
-	float f = 10.5;
 	obj.display((float)10.5);
 	
 	
